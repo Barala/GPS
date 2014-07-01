@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+	<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="mystyle.css">
+		<title>GPS Correction Mode</title>
+	</head>
+		<body>	
+		
+			<h1>GPS Correction Mode</h1>
+			
+			<div class="container">
+
+			<form action="trin.php" method="POST">
+				<div><input type="radio" name="mode" value="0">Single<br>
+				<input type="radio" name="mode" value="1">DGPS<br>
+				<input type="radio" name="mode" value="2">PPK<br>
+				<input type="radio" name="mode" value="3">Static<br>
+				<input type="radio" name="mode" value="4">Moving-Base<br>
+				<input type="radio" name="mode" value="5">Fixed<br>
+				<input type="radio" name="mode" value="6">PPP-Kinematic<br>
+				<input type="radio" name="mode" value="7">PPP-Static<br><br> </div>
+				<input type="submit"value="Enter"><br>
+			</form> 
+		</div>
+
+			 <!-- <form action = "barala.php" method = "get">
+				Rover Obs. file
+				<input type = "file" name="ro_file"/></br>
+				Rover Nav. file
+				<input type = "file" name="rn_file"/></br>
+				Base Station Obs. file
+				<input type = "file" name = "bo_file"/></br>
+				Base Station Nav. file	
+				<input type = "file" name = "bn_file"/></br>
+				<input type= "submit" value= "submit"/></br>
+			</form> -->
+		</body>	
+	</html>

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cat /dev/null > $1;
+touch output.txt;
+cat /dev/null > output.txt;
