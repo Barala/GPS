@@ -1,7 +1,7 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);  //for error check//
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);  //for error check//
 
 $t1 = microtime(get_as_float);
 for ($i=1; $i < 5 ; $i++) 
@@ -32,13 +32,13 @@ $ro= $_FILES['file1']["name"];
 $rn= $_FILES['file2']["name"];
 $bn= $_FILES['file3']["name"];
 $bo= $_FILES['file4']["name"];
-echo $id2;
+//echo $id2;
 
 // changing present directory to directory which contains shell script
 chdir('shellscript');
 // command to execute shell sscript and passing arguments 
 if($id2==1)
-{ echo "inside";
+{ //echo "inside";
   $lat=$_POST['lat'];
   $long=$_POST['long'];
   $height=$_POST['height'];
@@ -46,7 +46,7 @@ if($id2==1)
 }
 else
 {
-  echo "else";
+  //echo "else";
   $output=shell_exec("./my_script $id1 $ro $rn $bn $bo"); 
 }
 
@@ -64,32 +64,58 @@ $file = "output.txt";
     $string = $line_string[$lines-1]; //Reading Last Line od .txt file
     $data=explode('  ', $string); // It will break a line after space(' ') into strings which will not be having spaces
  		
-    echo "Latitude = ".$lat = $data[1];
- 	  echo "\n <br>Longitude = ".$lon = $data[2];
+    $lat = $data[1];
+ 	  $lon = $data[2];
  	  
     if($data[3] == NULL)
  		{
- 			echo "\n <br>Height = ".$height = $data[4];
+ 			$height = $data[4];
  		}
  		else 
  		{
- 			echo "\n <br>Height = ".$height = $data[3];
+ 			$height = $data[3];
  		}
   }
-
-  //-----Download text file 
-		header('Content-type: text/plain');
-		header('Content-Length: '.filesize($file));
-		header('Content-Disposition: attachment; filename='.$file);
-		readfile($file);
-
-	
-
-shell_exec("./my_script2 $file");
+  ?>
+  <form>
+    <center>
+        <table border="1">
+          <tr>
+            <td>Latitude</td>
+            <td><?php echo $lat ?></td>
+          </tr>
+          <tr>
+            <td>Longitude</td>
+            <td><?php echo $lon ?></td>
+          </tr>
+          <tr>
+            <td>Height</td>
+            <td><?php echo $height ?></td>
+          </tr>
+        </table>
+    </center>
+  </form>
+<?php
 $t2 = microtime(get_as_float);
-echo "<br>";
 $t = $t2-$t1;
-var_dump($t);
+?>
 
+<form>
+    <center>
+        <table border="1">
+          <tr>
+            <td>Time-Taken</td>
+            <td><?php echo $t ?></td>
+          </tr>
+        </table>
+    </center>
+</form>
 
-?>	 				
+<div class="container">
+    <center>
+      <form action="download.php" method="POST">
+        <input type="radio" name="mode" value="1">Download data Processed Report file<br>
+        <input type="submit"value="Download"><br>
+      </form>
+    </center> 
+</div>
