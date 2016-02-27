@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/* It will execute rnx2rtkp.exe with postional paramteters */
+/* It will execute rnx2rtkp.exe with positional paramteters */
 
 
 ./rnx2rtkp.exe -p $1 $2 $3 $4 $5;
